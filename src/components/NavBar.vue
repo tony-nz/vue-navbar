@@ -65,18 +65,55 @@
             </button>
             <div
               x-show="open"
-              class="absolute right-0 w-full mt-2 origin-top-right rounded-md shadow-lg md:w-48"
+              class="absolute right-0 w-full mt-2 origin-top-right z-30"
+              :class="{
+                'rounded-md shadow-lg md:w-48': item.type === 'list',
+                'md:max-w-screen-sm md:w-screen': item.type === 'grid',
+              }"
             >
               <div
                 class="px-2 py-2 bg-white rounded-md shadow dark-mode:bg-gray-800"
               >
-                <template v-for="child in item.children" :key="child.label">
-                  <a
-                    :href="child.link"
-                    class="block px-4 py-2 text-sm text-gray-700 transition-colors duration-200 transform rounded-md dark-mode:text-gray-200 hover:bg-gray-100 dark-mode:hover:bg-gray-700"
-                    >{{ child.label }}</a
-                  >
-                </template>
+                <div
+                  :class="{
+                    'grid grid-cols-1 md:grid-cols-2 gap-4':
+                      item.type === 'grid',
+                  }"
+                >
+                  <div v-for="child in item.children" :key="child.label">
+                    <a
+                      v-if="item.type === 'list'"
+                      :href="child.link"
+                      class="block px-4 py-2 text-sm text-gray-700 transition-colors duration-200 transform rounded-md dark-mode:text-gray-200 hover:bg-gray-100 dark-mode:hover:bg-gray-700"
+                      >{{ child.label }}</a
+                    >
+                    <a
+                      v-else-if="item.type === 'grid'"
+                      class="flex flex row items-start rounded-lg bg-transparent p-2 dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
+                      href="#"
+                    >
+                      <div class="bg-teal-500 text-white rounded-lg p-3">
+                        <svg
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          viewBox="0 0 24 24"
+                          class="md:h-6 md:w-6 h-4 w-4"
+                        >
+                          <path
+                            d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"
+                          ></path>
+                        </svg>
+                      </div>
+                      <div class="ml-3">
+                        <p class="font-semibold">{{ child.label }}</p>
+                        <p class="text-sm">{{ child.description }}</p>
+                      </div>
+                    </a>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -168,6 +205,7 @@
             x-transition:leave-start="transform opacity-100 scale-100"
             x-transition:leave-end="transform opacity-0 scale-95"
             class="absolute right-0 w-full md:max-w-screen-sm md:w-screen mt-2 origin-top-right z-30"
+            class="absolute right-0 w-full mt-2 origin-top-right rounded-md shadow-lg md:w-48 z-30"
           >
             <div
               class="px-2 pt-2 pb-4 bg-white rounded-md shadow-lg dark-mode:bg-gray-700"

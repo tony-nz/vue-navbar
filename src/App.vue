@@ -1,20 +1,16 @@
 <template>
   <div class="antialiased bg-gray-100 dark-mode:bg-gray-900 h-screen">
     <NavBar :menu="menuConfig" />
-    <img alt="Vue logo" src="./assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js + TypeScript App" />
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import HelloWorld from "./components/HelloWorld.vue";
 import NavBar from "./components/NavBar.vue";
 
 export default defineComponent({
   name: "App",
   components: {
-    HelloWorld,
     NavBar,
   },
   setup() {
@@ -38,10 +34,12 @@ export default defineComponent({
         children: [
           {
             label: "Submenu 1",
+            description: "Submenu 1 description",
             link: "/submenu1",
           },
           {
             label: "Submenu 2",
+            description: "Submenu 2 description",
             link: "/submenu2",
           },
         ],
@@ -53,18 +51,22 @@ export default defineComponent({
         children: [
           {
             label: "Submenu 1",
+            description: "Submenu 1 description",
             link: "/submenu1",
           },
           {
             label: "Submenu 2",
+            description: "Submenu 2 description",
             link: "/submenu2",
           },
           {
             label: "Submenu 3",
+            description: "Submenu 3 description",
             link: "/submenu3",
           },
           {
             label: "Submenu 4",
+            description: "Submenu 4 description",
             link: "/submenu4",
           },
         ],
@@ -80,7 +82,6 @@ export default defineComponent({
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   color: #2c3e50;
 }
 </style>
