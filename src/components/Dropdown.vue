@@ -36,33 +36,54 @@
             <router-link
               v-if="item.type === 'list'"
               :to="child.link"
-              class="block px-4 py-2 text-sm text-gray-700 transition-colors duration-200 transform rounded-md dark-mode:text-gray-200 hover:bg-gray-100 dark-mode:hover:bg-gray-700"
-              >{{ child.label }}</router-link
+              v-slot="{ isActive, isExactActive, navigate }"
+              custom
             >
+              <button
+                @click="navigate"
+                class="w-full block px-4 py-2 text-sm text-left text-gray-700 transition-colors duration-200 transform rounded-md dark-mode:text-gray-200 hover:bg-gray-100 dark-mode:hover:bg-gray-700"
+                :class="{
+                  'text-gray-900 bg-gray-200': isActive,
+                  'text-gray-900 bg-gray-200': isExactActive,
+                }"
+              >
+                {{ child.label }}
+              </button>
+            </router-link>
             <router-link
               v-else-if="item.type === 'grid'"
-              class="flex flex row items-start rounded-lg bg-transparent p-2 dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
+              v-slot="{ isActive, isExactActive, navigate }"
               :to="child.link"
+              custom
             >
-              <div class="bg-teal-500 text-white rounded-lg p-3">
-                <svg
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  viewBox="0 0 24 24"
-                  class="md:h-6 md:w-6 h-4 w-4"
-                >
-                  <path
-                    d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"
-                  ></path>
-                </svg>
-              </div>
-              <div class="ml-3">
-                <p class="font-semibold">{{ child.label }}</p>
-                <p class="text-sm">{{ child.description }}</p>
-              </div>
+              <button
+                @click="navigate"
+                class="flex flex row w-full text-left items-start rounded-lg bg-transparent p-2 dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
+                :class="{
+                  'text-gray-900 bg-gray-200': isActive,
+                  'text-gray-900 bg-gray-200': isExactActive,
+                }"
+              >
+                <div class="bg-teal-500 text-white rounded-lg p-3">
+                  <svg
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    viewBox="0 0 24 24"
+                    class="md:h-6 md:w-6 h-4 w-4"
+                  >
+                    <path
+                      d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"
+                    ></path>
+                  </svg>
+                </div>
+                <div class="ml-3">
+                  <p class="font-semibold">{{ child.label }}</p>
+                  <p class="text-sm">{{ child.description }}</p>
+                </div>
+              </button>
             </router-link>
           </div>
         </div>
