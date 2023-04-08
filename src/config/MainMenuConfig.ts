@@ -1,7 +1,7 @@
 export const menuConfig = [
   {
-    label: "Home",
-    link: "/",
+    label: "Dashboard",
+    link: "/dashboard",
   },
   {
     label: "About",
@@ -13,7 +13,6 @@ export const menuConfig = [
   },
   {
     label: "Dropdown",
-    link: "/dropdown",
     type: "list",
     children: [
       {
@@ -30,19 +29,8 @@ export const menuConfig = [
   },
   {
     label: "Grid Dropdown",
-    link: "/griddropdown",
     type: "grid",
     children: [
-      {
-        label: "Submenu 1",
-        description: "Submenu 1 description",
-        link: "/submenu1",
-      },
-      {
-        label: "Submenu 2",
-        description: "Submenu 2 description",
-        link: "/submenu2",
-      },
       {
         label: "Submenu 3",
         description: "Submenu 3 description",
@@ -52,6 +40,16 @@ export const menuConfig = [
         label: "Submenu 4",
         description: "Submenu 4 description",
         link: "/submenu4",
+      },
+      {
+        label: "Submenu 5",
+        description: "Submenu 5 description",
+        link: "/submenu5",
+      },
+      {
+        label: "Submenu 6",
+        description: "Submenu 6 description",
+        link: "/submenu6",
       },
     ],
   },

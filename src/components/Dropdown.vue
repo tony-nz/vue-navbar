@@ -33,16 +33,16 @@
           }"
         >
           <div v-for="child in item.children" :key="child.label">
-            <a
+            <router-link
               v-if="item.type === 'list'"
-              :href="child.link"
+              :to="child.link"
               class="block px-4 py-2 text-sm text-gray-700 transition-colors duration-200 transform rounded-md dark-mode:text-gray-200 hover:bg-gray-100 dark-mode:hover:bg-gray-700"
-              >{{ child.label }}</a
+              >{{ child.label }}</router-link
             >
-            <a
+            <router-link
               v-else-if="item.type === 'grid'"
               class="flex flex row items-start rounded-lg bg-transparent p-2 dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
-              href="#"
+              :to="child.link"
             >
               <div class="bg-teal-500 text-white rounded-lg p-3">
                 <svg
@@ -63,7 +63,7 @@
                 <p class="font-semibold">{{ child.label }}</p>
                 <p class="text-sm">{{ child.description }}</p>
               </div>
-            </a>
+            </router-link>
           </div>
         </div>
       </div>

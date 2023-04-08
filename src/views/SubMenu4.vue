@@ -1,9 +1,9 @@
 <template>
-  <div>Dashboard</div>
+  <div>SubMenu4</div>
 </template>
 <script lang="ts">
 import { defineComponent } from "vue";
 export default defineComponent({
-  name: "Dashboard",
+  name: "SubMenu4",
 });
 </script>

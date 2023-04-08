@@ -1,9 +1,9 @@
 <template>
-  <div>Dashboard</div>
+  <div>About</div>
 </template>
 <script lang="ts">
 import { defineComponent } from "vue";
 export default defineComponent({
-  name: "Dashboard",
+  name: "About",
 });
 </script>
