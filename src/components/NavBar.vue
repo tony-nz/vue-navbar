@@ -41,7 +41,24 @@
             :to="item.link"
             custom
           >
+            <a
+              v-if="item.external"
+              :href="item.link"
+              target="_blank"
+              class="px-4 py-2 mt-2 text-sm font-semibold rounded-md dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
+            >
+              <div class="flex flex-row items-center justify-center">
+                <div
+                  v-if="item.icon"
+                  :class="{ 'mr-2': item.label.length > 0 }"
+                >
+                  <inline-svg :src="item.icon" class="h-4 w-4" />
+                </div>
+                {{ item.label }}
+              </div>
+            </a>
             <button
+              v-else
               @click="navigate"
               class="px-4 py-2 mt-2 text-sm font-semibold rounded-md dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
               :class="{
@@ -71,12 +88,27 @@
     >
       <template v-for="item in menu" :key="item.label">
         <router-link
-          v-if="!item.children"
+          v-if="!item.children && item.link"
           v-slot="{ isActive, isExactActive, navigate }"
           :to="item.link"
+          :target="{ _blank: item.external === true }"
           custom
         >
+          <a
+            v-if="item.external"
+            :href="item.link"
+            target="_blank"
+            class="px-4 py-2 mt-2 text-sm font-semibold rounded-md dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
+          >
+            <div class="flex flex-row items-center justify-center">
+              <div v-if="item.icon" :class="{ 'mr-2': item.label.length > 0 }">
+                <inline-svg :src="item.icon" class="h-4 w-4" />
+              </div>
+              {{ item.label }}
+            </div>
+          </a>
           <button
+            v-else
             @click="navigate"
             class="px-4 py-2 mt-2 text-sm font-semibold rounded-md dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
             :class="{

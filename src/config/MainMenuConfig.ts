@@ -66,4 +66,10 @@ export const menuConfig = [
       },
     ],
   },
+  {
+    label: "@tony-nz",
+    icon: "/icons/Github.svg",
+    link: "https://github.com/tony-nz/vue-navbar",
+    external: true,
+  },
 ];
