@@ -21,7 +21,6 @@
     <a href="https://github.com/tony-nz/vue-navbar/issues">Report Bug</a>
     ·
     <a href="https://github.com/tony-nz/vue-navbar/issues">Request Feature</a>
-    ·
   </p>
 </div>
 
@@ -52,4 +51,4 @@ Distributed under the MIT License.
 [stars-url]: https://github.com/tony-nz/vue-navbar/stargazers
 [issues-shield]: https://img.shields.io/github/issues/tony-nz/vue-navbar.svg?style=for-the-badge
 [issues-url]: https://github.com/tony-nz/vue-navbar/issues
-[product-screenshot]: src/assets/screenshot.png
+[product-screenshot]: src/assets/app-screenshot.png
