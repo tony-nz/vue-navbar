@@ -8,23 +8,15 @@
     <img src="src/assets/logo.png" alt="Logo" width="80" height="80">
   </a>
 
-<h3 align="center">Vue Form Generator</h3>
+<h3 align="center">Vue Navbar</h3>
 
   <p align="center">
     vue-navbar is a lightweight and easy-to-use Vue 3 component that provides a customizable navigation bar for your web application. Built with the popular utility-first CSS framework, Tailwind CSS, this component offers a simple and elegant solution to add a responsive navbar to your Vue 3 project.
-    <br />
-    ### Features
-    - Simple and lightweight Vue 3 component
-    - Configurable options to customize the navbar
-    - Responsive design for all screen sizes
-    - Easy integration with Tailwind CSS
     <br />
     <br />
     <a href="#">Documentation</a>
     ·
     <a href="https://vue-navbar.netlify.app/" target="_blank">View Demo</a>
-    ·
-    <a href="https://github.com/tony-nz/vue-navbar-example" target="_blank">View Demo (Github)</a>
     ·
     <a href="https://github.com/tony-nz/vue-navbar/issues">Report Bug</a>
     ·
@@ -35,7 +27,12 @@
 
 [![Vue Navbar Screen Shot][product-screenshot]](https://vue-navbar.netlify.app)
 
-### Installation
+### Features
+
+- Simple and lightweight Vue 3 component
+- Configurable options to customize the navbar
+- Responsive design for all screen sizes
+- Easy integration with Tailwind CSS
 
 
 <!-- LICENSE -->
