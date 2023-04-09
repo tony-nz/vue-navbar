@@ -45,8 +45,7 @@
               @click="navigate"
               class="px-4 py-2 mt-2 text-sm font-semibold rounded-md dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
               :class="{
-                'text-gray-900 bg-gray-200': isActive,
-                'text-gray-900 bg-gray-200': isExactActive,
+                'text-gray-900 bg-gray-200': isActive || isExactActive,
               }"
             >
               {{ item.label }}
@@ -59,8 +58,8 @@
       </nav>
     </div>
   </div>
+  <!-- mobile menu -->
   <nav class="md:hidden sm:absolute right-0 w-full origin-top-right z-30">
-    <!-- mobile menu -->
     <div
       class="absolute z-30 flex flex-col items-center justify-center w-full px-2 py-4 space-y-2 text-center bg-gray-100 dark-mode:bg-gray-800"
       :class="{ block: isOpen, hidden: !isOpen }"
@@ -76,14 +75,13 @@
             @click="navigate"
             class="px-4 py-2 mt-2 text-sm font-semibold rounded-md dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
             :class="{
-              'text-gray-900 bg-gray-200': isActive,
-              'text-gray-900 bg-gray-200': isExactActive,
+              'text-gray-900 bg-gray-200': isActive || isExactActive,
             }"
           >
             {{ item.label }}
           </button>
         </router-link>
-        <div v-if="item.children" class="relative">
+        <div v-if="item.children" class="relative w-full">
           <Dropdown :item="item" />
         </div>
       </template>

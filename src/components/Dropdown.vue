@@ -2,7 +2,7 @@
   <div v-on:mouseover="isOpen = true" v-on:mouseleave="isOpen = false">
     <router-link :to="item.link" v-slot="{ isActive }" custom>
       <button
-        class="flex flex-row items-center w-full px-4 py-2 mt-2 text-sm font-semibold text-left rounded-md dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:focus:bg-gray-600 dark-mode:hover:bg-gray-600 md:w-auto md:inline md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
+        class="flex flex-row items-center mx-auto px-4 py-2 mt-2 text-sm font-semibold text-left rounded-md dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:focus:bg-gray-600 dark-mode:hover:bg-gray-600 md:w-auto md:inline md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
         @click="isOpen = !isOpen"
         :class="{
           'text-gray-900 bg-gray-200': isActive,
@@ -27,14 +27,16 @@
       v-show="isOpen"
       class="absolute right-0 w-full origin-top-right z-30"
       :class="{
-        'rounded-md shadow-lg md:w-48': item.type === 'list',
+        'w-full mx-auto rounded-md shadow-lg md:w-48': item.type === 'list',
         'md:max-w-screen-sm md:w-screen': item.type === 'grid',
       }"
     >
-      <div class="px-2 py-2 bg-white rounded-md shadow dark-mode:bg-gray-800">
+      <div
+        class="mx-auto px-2 py-2 bg-white rounded-md shadow dark-mode:bg-gray-800"
+      >
         <div
           :class="{
-            'grid grid-cols-1 md:grid-cols-2 gap-4': item.type === 'grid',
+            'grid grid-cols-1 grid-cols-2 gap-4': item.type === 'grid',
           }"
         >
           <div v-for="child in item.children" :key="child.label">
@@ -48,8 +50,7 @@
                 @click="navigate"
                 class="w-full block px-4 py-2 text-sm text-left text-gray-700 transition-colors duration-200 transform rounded-md dark-mode:text-gray-200 hover:bg-gray-100 dark-mode:hover:bg-gray-700"
                 :class="{
-                  'text-gray-900 bg-gray-200': isActive,
-                  'text-gray-900 bg-gray-200': isExactActive,
+                  'text-gray-900 bg-gray-200': isActive || isExactActive,
                 }"
               >
                 {{ child.label }}
