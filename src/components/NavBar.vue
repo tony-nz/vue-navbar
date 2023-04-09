@@ -36,7 +36,7 @@
       >
         <template v-for="item in menu" :key="item.label">
           <router-link
-            v-if="!item.children"
+            v-if="!item.children && !item.external"
             v-slot="{ isActive, isExactActive, navigate }"
             :to="item.link"
             custom
@@ -88,10 +88,9 @@
     >
       <template v-for="item in menu" :key="item.label">
         <router-link
-          v-if="!item.children && item.link"
+          v-if="!item.children && !item.external && item.link"
           v-slot="{ isActive, isExactActive, navigate }"
           :to="item.link"
-          :target="{ _blank: item.external === true }"
           custom
         >
           <a
