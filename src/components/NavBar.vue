@@ -48,7 +48,12 @@
                 'text-gray-900 bg-gray-200': isActive || isExactActive,
               }"
             >
-              {{ item.label }}
+              <div class="flex flex-row items-center justify-center">
+                <div v-if="item.icon" class="mr-2">
+                  <inline-svg :src="item.icon" class="h-4 w-4" />
+                </div>
+                {{ item.label }}
+              </div>
             </button>
           </router-link>
           <div v-if="item.children" class="relative">
@@ -78,7 +83,12 @@
               'text-gray-900 bg-gray-200': isActive || isExactActive,
             }"
           >
-            {{ item.label }}
+            <div class="flex flex-row items-center justify-center">
+              <div v-if="item.icon" class="mr-2">
+                <inline-svg :src="item.icon" class="h-4 w-4" />
+              </div>
+              {{ item.label }}
+            </div>
           </button>
         </router-link>
         <div v-if="item.children" class="relative w-full">

@@ -8,19 +8,24 @@
           'text-gray-900 bg-gray-200': isActive,
         }"
       >
-        <span>{{ item.label }}</span>
-        <svg
-          fill="currentColor"
-          viewBox="0 0 20 20"
-          :class="{ 'rotate-180': isOpen, 'rotate-0': !isOpen }"
-          class="inline w-4 h-4 ml-1 transition-transform duration-200 transform"
-        >
-          <path
-            fill-rule="evenodd"
-            d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-            clip-rule="evenodd"
-          ></path>
-        </svg>
+        <div class="flex flex-row items-center justify-center">
+          <div v-if="item.icon" class="mr-2">
+            <inline-svg :src="item.icon" class="h-4 w-4" />
+          </div>
+          {{ item.label }}
+          <svg
+            fill="currentColor"
+            viewBox="0 0 20 20"
+            :class="{ 'rotate-180': isOpen, 'rotate-0': !isOpen }"
+            class="inline w-4 h-4 ml-1 transition-transform duration-200 transform"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+              clip-rule="evenodd"
+            ></path>
+          </svg>
+        </div>
       </button>
     </router-link>
     <div
@@ -53,7 +58,12 @@
                   'text-gray-900 bg-gray-200': isActive || isExactActive,
                 }"
               >
-                {{ child.label }}
+                <div class="flex flex-row items-center justify-left">
+                  <div v-if="item.icon" class="mr-2">
+                    <inline-svg :src="item.icon" class="h-4 w-4" />
+                  </div>
+                  {{ child.label }}
+                </div>
               </button>
             </router-link>
             <router-link
@@ -70,20 +80,8 @@
                   'text-gray-900 bg-gray-200': isExactActive,
                 }"
               >
-                <div class="bg-teal-500 text-white rounded-lg p-3">
-                  <svg
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    viewBox="0 0 24 24"
-                    class="md:h-6 md:w-6 h-4 w-4"
-                  >
-                    <path
-                      d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"
-                    ></path>
-                  </svg>
+                <div class="rounded-lg p-3">
+                  <inline-svg :src="item.icon" class="md:h-6 md:w-6 h-4 w-4" />
                 </div>
                 <div class="ml-3">
                   <p class="font-semibold">{{ child.label }}</p>
