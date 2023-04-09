@@ -62,7 +62,7 @@
   <nav class="md:hidden sm:absolute right-0 w-full origin-top-right z-30">
     <!-- mobile menu -->
     <div
-      class="flex flex-col items-center justify-center w-full px-2 py-4 space-y-2 text-center bg-gray-100 dark-mode:bg-gray-800"
+      class="absolute z-30 flex flex-col items-center justify-center w-full px-2 py-4 space-y-2 text-center bg-gray-100 dark-mode:bg-gray-800"
       :class="{ block: isOpen, hidden: !isOpen }"
     >
       <template v-for="item in menu" :key="item.label">
