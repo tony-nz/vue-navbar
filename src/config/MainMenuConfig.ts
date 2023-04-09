@@ -2,17 +2,17 @@ export const menuConfig = [
   {
     label: "Dashboard",
     link: "/dashboard",
-    icon: "/icons/Compiling.svg",
+    icon: "/icons/Dashboard.svg",
   },
   {
     label: "About",
     link: "/about",
-    icon: "/icons/Compiling.svg",
+    icon: "/icons/About.svg",
   },
   {
     label: "Contact",
     link: "/contact",
-    icon: "/icons/Compiling.svg",
+    icon: "/icons/Contact.svg",
   },
   {
     label: "Dropdown",
