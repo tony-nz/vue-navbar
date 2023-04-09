@@ -13,7 +13,7 @@
           fill="currentColor"
           viewBox="0 0 20 20"
           :class="{ 'rotate-180': isOpen, 'rotate-0': !isOpen }"
-          class="inline w-4 h-4 mt-1 ml-1 transition-transform duration-200 transform md:-mt-1"
+          class="inline w-4 h-4 ml-1 transition-transform duration-200 transform"
         >
           <path
             fill-rule="evenodd"
