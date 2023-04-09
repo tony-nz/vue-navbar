@@ -13,43 +13,45 @@ export const menuConfig = [
   },
   {
     label: "Dropdown",
+    link: "/dropdown",
     type: "list",
     children: [
       {
         label: "Submenu 1",
         description: "Submenu 1 description",
-        link: "/submenu1",
+        link: "/dropdown/submenu1",
       },
       {
         label: "Submenu 2",
         description: "Submenu 2 description",
-        link: "/submenu2",
+        link: "/dropdown/submenu2",
       },
     ],
   },
   {
     label: "Grid Dropdown",
+    link: "/grid",
     type: "grid",
     children: [
       {
         label: "Submenu 3",
         description: "Submenu 3 description",
-        link: "/submenu3",
+        link: "/grid/submenu3",
       },
       {
         label: "Submenu 4",
         description: "Submenu 4 description",
-        link: "/submenu4",
+        link: "/grid/submenu4",
       },
       {
         label: "Submenu 5",
         description: "Submenu 5 description",
-        link: "/submenu5",
+        link: "/grid/submenu5",
       },
       {
         label: "Submenu 6",
         description: "Submenu 6 description",
-        link: "/submenu6",
+        link: "/grid/submenu6",
       },
     ],
   },

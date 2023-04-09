@@ -1,4 +1,9 @@
-import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
+import {
+  createRouter,
+  createWebHistory,
+  RouteRecordRaw,
+  RouterView,
+} from "vue-router";
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -22,34 +27,48 @@ const routes: Array<RouteRecordRaw> = [
         component: () => import("@/views/Contact.vue"),
       },
       {
-        path: "/submenu1",
-        name: "submenu1",
-        component: () => import("@/views/SubMenu1.vue"),
+        path: "/dropdown",
+        redirect: { name: "submenu1" },
+        component: RouterView,
+        children: [
+          {
+            path: "/dropdown/submenu1",
+            name: "submenu1",
+            component: () => import("@/views/SubMenu1.vue"),
+          },
+          {
+            path: "/dropdown/submenu2",
+            name: "submenu2",
+            component: () => import("@/views/SubMenu2.vue"),
+          },
+        ],
       },
       {
-        path: "/submenu2",
-        name: "submenu2",
-        component: () => import("@/views/SubMenu2.vue"),
-      },
-      {
-        path: "/submenu3",
-        name: "submenu3",
-        component: () => import("@/views/SubMenu3.vue"),
-      },
-      {
-        path: "/submenu4",
-        name: "submenu4",
-        component: () => import("@/views/SubMenu4.vue"),
-      },
-      {
-        path: "/submenu5",
-        name: "submenu5",
-        component: () => import("@/views/SubMenu5.vue"),
-      },
-      {
-        path: "/submenu6",
-        name: "submenu6",
-        component: () => import("@/views/SubMenu6.vue"),
+        path: "/grid",
+        redirect: { name: "submenu3" },
+        component: RouterView,
+        children: [
+          {
+            path: "/grid/submenu3",
+            name: "submenu3",
+            component: () => import("@/views/SubMenu3.vue"),
+          },
+          {
+            path: "/grid/submenu4",
+            name: "submenu4",
+            component: () => import("@/views/SubMenu4.vue"),
+          },
+          {
+            path: "/grid/submenu5",
+            name: "submenu5",
+            component: () => import("@/views/SubMenu5.vue"),
+          },
+          {
+            path: "/grid/submenu6",
+            name: "submenu6",
+            component: () => import("@/views/SubMenu6.vue"),
+          },
+        ],
       },
     ],
   },
