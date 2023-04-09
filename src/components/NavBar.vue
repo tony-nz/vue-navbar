@@ -13,17 +13,17 @@
         >
         <button
           class="rounded-lg md:hidden focus:outline-none focus:shadow-outline"
-          @click="open = !open"
+          @click="isOpen = !isOpen"
         >
           <svg fill="currentColor" viewBox="0 0 20 20" class="w-6 h-6">
             <path
-              x-show="!open"
+              v-show="!isOpen"
               fill-rule="evenodd"
               d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM9 15a1 1 0 011-1h6a1 1 0 110 2h-6a1 1 0 01-1-1z"
               clip-rule="evenodd"
             ></path>
             <path
-              x-show="open"
+              v-show="isOpen"
               fill-rule="evenodd"
               d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
               clip-rule="evenodd"
@@ -59,10 +59,40 @@
       </nav>
     </div>
   </div>
+  <nav class="md:hidden sm:absolute right-0 w-full origin-top-right z-30">
+    <!-- mobile menu -->
+    <div
+      class="flex flex-col items-center justify-center w-full px-2 py-4 space-y-2 text-center bg-gray-100 dark-mode:bg-gray-800"
+      :class="{ block: isOpen, hidden: !isOpen }"
+    >
+      <template v-for="item in menu" :key="item.label">
+        <router-link
+          v-if="!item.children"
+          v-slot="{ isActive, isExactActive, navigate }"
+          :to="item.link"
+          custom
+        >
+          <button
+            @click="navigate"
+            class="px-4 py-2 mt-2 text-sm font-semibold rounded-md dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
+            :class="{
+              'text-gray-900 bg-gray-200': isActive,
+              'text-gray-900 bg-gray-200': isExactActive,
+            }"
+          >
+            {{ item.label }}
+          </button>
+        </router-link>
+        <div v-if="item.children" class="relative">
+          <Dropdown :item="item" />
+        </div>
+      </template>
+    </div>
+  </nav>
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
+import { defineComponent, ref } from "vue";
 import Dropdown from "./Dropdown.vue";
 
 export default defineComponent({
@@ -77,7 +107,8 @@ export default defineComponent({
     },
   },
   setup() {
-    return {};
+    const isOpen = ref(false);
+    return { isOpen };
   },
 });
 </script>
