@@ -54,9 +54,10 @@
               <button
                 @click="changeRoute(navigate)"
                 class="w-full block px-4 py-2 text-sm text-left text-gray-700 transition-colors duration-200 transform rounded-md dark-mode:text-gray-200 hover:bg-gray-100 dark-mode:hover:bg-gray-700"
-                :class="{
-                  'text-gray-900 bg-gray-200': isActive || isExactActive,
-                }"
+                :class="[
+                  defaultClass,
+                  (isActive || isExactActive) && activeClass,
+                ]"
               >
                 <div class="flex flex-row items-center justify-left">
                   <div v-if="item.icon" class="mr-2">
@@ -75,9 +76,10 @@
               <button
                 @click="changeRoute(navigate)"
                 class="flex flex row w-full text-left items-start rounded-lg p-2 dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
-                :class="{
-                  'text-gray-900 bg-gray-200': isActive || isExactActive,
-                }"
+                :class="[
+                  defaultClass,
+                  (isActive || isExactActive) && activeClass,
+                ]"
               >
                 <div class="rounded-lg p-3">
                   <inline-svg :src="item.icon" class="md:h-6 md:w-6 h-4 w-4" />
@@ -101,6 +103,14 @@ import { defineComponent, ref } from "vue";
 export default defineComponent({
   name: "Dropdown",
   props: {
+    activeClass: {
+      type: String,
+      default: "text-gray-900 bg-gray-200",
+    },
+    defaultClass: {
+      type: String,
+      default: "text-gray-700 hover:text-gray-900 hover:bg-gray-200",
+    },
     item: {
       type: Object,
       default: () => ({}),

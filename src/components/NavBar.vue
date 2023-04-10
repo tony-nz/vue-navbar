@@ -43,10 +43,10 @@
           >
             <button
               @click="navigate"
-              class="px-4 py-2 mt-2 text-sm font-semibold rounded-md dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
-              :class="{
-                'text-gray-900 bg-gray-200': isActive || isExactActive,
-              }"
+              :class="[
+                defaultClass,
+                (isActive || isExactActive) && activeClass,
+              ]"
             >
               <div class="flex flex-row items-center justify-center">
                 <div v-if="item.icon" class="mr-2">
@@ -60,7 +60,7 @@
             v-if="item.external"
             :href="item.link"
             target="_blank"
-            class="px-4 py-2 mt-2 text-sm font-semibold rounded-md dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
+            :class="defaultClass"
           >
             <div class="flex flex-row items-center justify-center">
               <div v-if="item.icon" :class="{ 'mr-2': item.label.length > 0 }">
@@ -70,7 +70,7 @@
             </div>
           </a>
           <div v-if="item.children" class="relative">
-            <Dropdown :item="item" />
+            <Dropdown :activeClass="activeClass" :item="item" />
           </div>
         </template>
       </nav>
@@ -91,10 +91,7 @@
         >
           <button
             @click="navigate"
-            class="px-4 py-2 mt-2 text-sm font-semibold rounded-md dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
-            :class="{
-              'text-gray-900 bg-gray-200': isActive || isExactActive,
-            }"
+            :class="[defaultClass, (isActive || isExactActive) && activeClass]"
           >
             <div class="flex flex-row items-center justify-center">
               <div v-if="item.icon" class="mr-2">
@@ -104,12 +101,7 @@
             </div>
           </button>
         </router-link>
-        <a
-          v-else
-          :href="item.link"
-          target="_blank"
-          class="px-4 py-2 mt-2 text-sm font-semibold rounded-md dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
-        >
+        <a v-else :href="item.link" target="_blank" :class="defaultClass">
           <div class="flex flex-row items-center justify-center">
             <div v-if="item.icon" :class="{ 'mr-2': item.label.length > 0 }">
               <inline-svg :src="item.icon" class="h-4 w-4" />
@@ -118,7 +110,7 @@
           </div>
         </a>
         <div v-if="item.children" class="relative w-full">
-          <Dropdown :item="item" />
+          <Dropdown :activeClass="activeClass" :item="item" />
         </div>
       </template>
     </div>
@@ -135,6 +127,15 @@ export default defineComponent({
     Dropdown,
   },
   props: {
+    activeClass: {
+      type: String,
+      default: "text-gray-900 bg-gray-200",
+    },
+    defaultClass: {
+      type: String,
+      default:
+        "px-4 py-2 mt-2 text-sm font-semibold rounded-md dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline",
+    },
     menu: {
       type: Array,
       default: () => [],
